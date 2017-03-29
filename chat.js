@@ -9,8 +9,8 @@ class ChatApp extends EventEmitter {
 
     this.title = title;
       
-/* В классе чата ChatApp добавить метод close, который будет вызывать событие close 
-*/
+// В классе чата ChatApp добавить метод close, который будет вызывать событие close 
+
    close() {
         this.emit('close');                                
     }
@@ -26,11 +26,7 @@ let chatOnMessage = (message) => {
 };
 
 /*
-Часть 1
-
 Добавить обработчик события message для Чата Вебинара (webinarChat), который выводит в консоль сообщение 'Готовлюсь к ответу'. Обработчик создать в отдельной функции.
-Для Вконтакте (vkChat) установить максимальное количество обработчиков событий, равное 2.
-Добавить обработчик 'Готовлюсь к ответу' из пункта 1.1 к чату Вконтакте.
 */
 
 function readyToAnswer() {
@@ -44,7 +40,9 @@ webinarChat.on('message', readyToAnswer);
 facebookChat.on('message', chatOnMessage);
 
 vkChat.on('message', chatOnMessage);
-vkChat.getMaxListeners(2);                              	
+//Для Вконтакте (vkChat) установить максимальное количество обработчиков событий, равное 2.
+vkChat.getMaxListeners(2);     
+//Добавить обработчик 'Готовлюсь к ответу' из пункта 1.1 к чату Вконтакте.
 vkChat.on('message', readyToAnswer);
 //vkChat.emit('message', readyToAnswer); 
 
@@ -62,8 +60,6 @@ facebookChat.removeListener('message', chatOnMessage);
 }, 15000 );
 
 /*
-Часть 2
-
 Для чата вконтакте (vkChat) добавить обработчик close, выводящий в консоль текст "Чат вконтакте закрылся :(".
 Вызывать у чата вконтакте метод close().
  */
